@@ -1,9 +1,12 @@
 import React from 'react';
+import Typography from '@mui/material/Typography';
 
 function About(){
     return(
         <div>
-            <h1> The About Page </h1>
+            <Typography variant='h3' color='primary'>
+                The about page
+            </Typography>
         </div>
     );
 }
