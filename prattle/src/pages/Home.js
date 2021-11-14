@@ -1,40 +1,44 @@
-import React from 'react';
-import { experimentalStyled as styled } from '@mui/material/styles';
+import * as React from 'react';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import '../App.css';
+import CssBaseline from '@mui/material/CssBaseline';
+import Toolbar from '@mui/material/Toolbar';
+import Navbar from '../components/Navbar' 
+import Appbar from '../components/Appbar'
+import Chatbox from '../components/Chatbox';
+import Textinput from '../components/Textinput';
 
-const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+const drawerWidth = 240;
 
-function Home(){
-    return(
-    <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1} justify="flex-end">
-          <Grid item xs={12}>
-            <Item>Heading bar</Item>
-          </Grid>
-          <Grid item xs={4}>
-            <Item>Main nav</Item>
-          </Grid>
-          <Grid item xs={8}>
-            <Item>Message area</Item>
-          </Grid>
-          <Grid item xs={4}>
-            <Item>Small nav</Item>
-          </Grid>
-          <Grid item xs={8}>
-            <Item>Text area</Item>
-          </Grid>
-        </Grid>
-      </Box> 
+export default function Home() {
+  return (
+    <div>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <Appbar/>
+      <Navbar/>
+      <Box
+        position="absolute"
+        marginLeft={`${drawerWidth}px`}
+        component="maibackground.defaultn"
+        sx={{ flexGrow: 1, bgcolor: '', p: 3 }}
+      >
+      <Toolbar />
+      <Chatbox />
+      </Box>
+    </Box>
+    <Box
+      position="fixed"
+      marginLeft={`${drawerWidth}px`}
+      sx={{
+        bottom: 0,
+        width: 1,
+        height: 0.15,
+        backgroundColor: 'background.default',
+      }}
+    >
+      <Textinput/>
+    </Box>
 
-    );
+    </div>
+  );
 }
-
-export default Home;
