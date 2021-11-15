@@ -1,4 +1,5 @@
 import React from 'react';
+import './Message.css';
 
 export default function Message(props) {
   return (
@@ -46,6 +47,46 @@ export default function Message(props) {
           <div className='ownBubble own'>Stunned but impressed.</div>
         </div>
         <span className='own'>11:07</span>
+      </div>
+      <div className='bubbleWrapper'>
+        <div className='inlineContainer'>
+          <img
+            className='inlineIcon'
+            src='https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'
+          />
+          <div className='otherBubble other'>How about throwing stars?</div>
+        </div>
+        <span className='other'>11:11</span>
+      </div>
+      <div className='bubbleWrapper'>
+        <div className='inlineContainer'>
+          <img
+            className='inlineIcon'
+            src='https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'
+          />
+          <div className='otherBubble other'>How about throwing stars?</div>
+        </div>
+        <span className='other'>11:11</span>
+      </div>
+      <div className='bubbleWrapper'>
+        <div className='inlineContainer'>
+          <img
+            className='inlineIcon'
+            src='https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'
+          />
+          <div className='otherBubble other'>How about throwing stars?</div>
+        </div>
+        <span className='other'>11:11</span>
+      </div>
+      <div className='bubbleWrapper'>
+        <div className='inlineContainer'>
+          <img
+            className='inlineIcon'
+            src='https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png'
+          />
+          <div className='otherBubble other'>How about throwing stars?</div>
+        </div>
+        <span className='other'>11:11</span>
       </div>
       <div className='bubbleWrapper'>
         <div className='inlineContainer'>
