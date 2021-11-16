@@ -9,8 +9,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import { Link as RouterLink } from 'react-router-dom';
+
 
 function Copyright(props) {
   return (
@@ -40,6 +40,14 @@ export default function SignUp() {
     console.log({
       email: data.get('email'),
       password: data.get('password'),
+
+      /*
+      app.post("/action", (req, res) => {
+      var userData = {
+      username: req.body.username,
+      password: req.body.password
+      }
+      */
     });
   };
 
