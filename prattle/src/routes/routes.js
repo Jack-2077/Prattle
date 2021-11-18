@@ -11,13 +11,12 @@ router.post('/signup', (req, res) => {
   });
   signedUpUser
     .save()
-    .then((data) => {
+    .then(data => {
       res.json(data);
     })
-    .catch((error) => {
+    .catch(error => {
       res.json(error);
     });
-  res.send('send');
 });
 
 module.exports = router;
