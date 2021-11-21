@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
-
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -36,19 +36,17 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
+
+    const registered = {
+      first_name: data.get('firstName'),
+      last_name: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
+    };
 
-      /*
-      app.post("/action", (req, res) => {
-      var userData = {
-      username: req.body.username,
-      password: req.body.password
-      }
-      */
-    });
+    axios
+      .post('http://localhost:4000/app/signup', registered)
+      .then((res) => console.log(res.data));
   };
 
   return (
