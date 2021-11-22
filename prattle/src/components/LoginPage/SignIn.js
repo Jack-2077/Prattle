@@ -9,10 +9,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-////
-//import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { Link as RouterLink } from 'react-router-dom';
+import React, {useState} from 'react';
+
 
 function Copyright(props) {
   return (
@@ -23,8 +23,8 @@ function Copyright(props) {
       {...props}
     >
       {'Copyright © '}
-      <Link color='inherit' href='https://mui.com/'>
-        Your Website
+      <Link color='inherit' href='https://github.com/Cezaraus/CPSC2600-Project'>
+        Prattle
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -35,14 +35,23 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const [validSignIn, setValidSignIn] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
+    const login = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+
+    axios
+      .post('http://localhost:4000/app/signin', login)
+      .then((res) => {
+        console.log(res.data);
+        (res.data.bool) ? setValidSignIn("") : setValidSignIn("User not found. Email or password incorrect!");
+      });
+    
   };
 
   return (
@@ -98,6 +107,9 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
+            <Typography color="red" sx={{fontWeight:"bold"}}>
+                  {validSignIn}
+            </Typography>
               <Grid item xs></Grid>
               <Grid item>
                 <Link component={RouterLink} variant='body2' to='/signup'>
@@ -110,5 +122,4 @@ export default function SignIn() {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
-  );
-}
+  );}
