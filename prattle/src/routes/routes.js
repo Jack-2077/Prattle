@@ -28,15 +28,15 @@ router.post('/signin', (req, res) => {
     if(user){
       console.log("Login request found user: " + user);
       res.json({
-        bool: 1 //Send message "0" to show user is found
+        bool: 1 //Send message "1" to show user is found
       })
     }else{
-      console.log("User not found!");
+      console.log("User not found!" + user);
       res.json({
-        bool: 0 //Send message "1" to show user is NOT found
+        bool: 0 //Send message "0" to show user is NOT found
       });
     }
   })
-})
+});
 
 module.exports = router;
