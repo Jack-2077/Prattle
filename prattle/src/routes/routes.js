@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const signUpTemplate = require('../models/SignUpModels');
+const Message = require('../models/MessageModel');
 
 router.post('/signup', (req, res) => {
   const signedUpUser = new signUpTemplate({
@@ -9,6 +10,7 @@ router.post('/signup', (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
+
   signedUpUser
     .save()
     .then(data => {
@@ -37,6 +39,34 @@ router.post('/signin', (req, res) => {
       });
     }
   })
+});
+
+router.post('/messages', (req, res) => {
+  const newMessage = new Message({
+    message: req.body.message,
+    email: req.body.email,
+  }); 
+
+  newMessage
+    .save()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+})
+
+router.get('/messages', (req, res) => {
+  Message.find({email: 'Lii@gmail.com'})
+  .then(msg => {
+    if(msg){
+      console.log(msg);
+      res.json({
+        messageRes: JSON.stringify(msg)
+      });
+    }
+  });
 });
 
 module.exports = router;
