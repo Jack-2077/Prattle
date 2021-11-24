@@ -42,8 +42,8 @@ function Textinput() {
           }}>
   
           <TextField
-            fullWidth="true"
-            id=""
+            fullWidth
+            id="textInput"
             label="Enter your message here..."
             multiline
             rows={5}
