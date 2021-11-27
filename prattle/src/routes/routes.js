@@ -14,7 +14,7 @@ router.post('/signup', (req, res) => {
 
   signUpTemplate.findOne({ email: email }).then((user) => {
     if (user) {
-      console.log('email already exists: ' + user);
+      console.log('email already exists: ' + user.email);
       res.json({
         bool: 0,
       });
@@ -74,6 +74,17 @@ router.get('/messages', (req, res) => {
         messageRes: JSON.stringify(msg),
       });
     }
+  });
+});
+
+router.get('/users', (req, res) => {
+  signUpTemplate.find({}).then((users) => {
+    let userList = {};
+
+    users.forEach(
+      (user) => (userList[user._id] = user.first_name + ' ' + user.last_name)
+    );
+    res.json({ userList });
   });
 });
 
