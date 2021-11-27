@@ -86,7 +86,9 @@ function Navbar() {
       <List>
         {userList.map((user, index) => (
           <ListItem button key={index}>
-            <Avatar {...stringAvatar(user)} />
+            <ListItemIcon>
+              <Avatar {...stringAvatar(user)} />
+            </ListItemIcon>
             <ListItemText primary={user} />
           </ListItem>
         ))}
