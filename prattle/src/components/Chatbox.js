@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import './chat.css';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
@@ -16,14 +16,22 @@ function Chatbox() {
       })
   }
 
+
+
   const showMsg = msgArr.map((arr) =>
     <Typography className="message-bubble">{arr.message}</Typography>
   )
 
+  useEffect(() => {
+    let ignore = false;
+    
+    if (!ignore)  getMessages()
+    return () => { ignore = true; }
+    },[]);
+
 console.log(msgArr);
   return (
     <div>
-      <Button onClick={getMessages}>TEST</Button>
       {showMsg}
     </div>
   );
