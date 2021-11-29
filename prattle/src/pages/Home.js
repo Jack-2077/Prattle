@@ -7,7 +7,6 @@ import Appbar from '../components/Appbar';
 import Chatbox from '../components/Chatbox'; 
 import Textinput from '../components/Textinput';
 
-import SignIn from '../components/LoginPage/SignIn';
 const drawerWidth = 240;
 
 export default function Home() {
@@ -20,7 +19,7 @@ export default function Home() {
        <Box
          position='absolute'
          marginLeft={`${drawerWidth}px`}
-         component='maibackground.defaultn'
+        //  component='maibackground.default'
          sx={{ flexGrow: 1, bgcolor: '', p: 3 }}
        >
          <Toolbar />
