@@ -11,8 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { Link as RouterLink } from 'react-router-dom';
-import React, {useState} from 'react';
-
+import React, { useState } from 'react';
 
 function Copyright(props) {
   return (
@@ -33,10 +32,8 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
-
 const SignIn = (props) => {
   const [validSignIn, setValidSignIn] = useState("");
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,13 +43,12 @@ const SignIn = (props) => {
       password: data.get('password'),
     };
 
-    axios
-      .post('http://localhost:4000/app/signin', login)
-      .then((res) => {
-        console.log(res.data);
-        (res.data.bool) ? setValidSignIn("") : setValidSignIn("User not found. Email or password incorrect!");
-      });
-    
+    axios.post('http://localhost:4000/app/signin', login).then((res) => {
+      console.log(res.data);
+      res.data.bool
+        ? setValidSignIn('')
+        : setValidSignIn('User not found. Email or password incorrect!');
+    });
   };
 
   return (
@@ -109,9 +105,9 @@ const SignIn = (props) => {
               Sign In
             </Button>
             <Grid container>
-            <Typography color="red" sx={{fontWeight:"bold"}}>
-                  {validSignIn}
-            </Typography>
+              <Typography color='red' sx={{ fontWeight: 'bold' }}>
+                {validSignIn}
+              </Typography>
               <Grid item xs></Grid>
               <Grid item>
                 <Link component={RouterLink} variant='body2' to='/signup'>
