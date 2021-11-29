@@ -16,14 +16,15 @@ function Chatbox() {
       })
   }
 
-  for(let i=0; i<msgArr.length;i++){
-    msgString += `${msgArr[i].message}`;
-  }
+  const showMsg = msgArr.map((arr) =>
+    <Typography className="message-bubble">{arr.message}</Typography>
+  )
 
+console.log(msgArr);
   return (
     <div>
       <Button onClick={getMessages}>TEST</Button>
-      <Typography>{msgString}</Typography>
+      {showMsg}
     </div>
   );
 
