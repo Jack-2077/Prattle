@@ -32,8 +32,11 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
+
 const SignIn = (props) => {
-  const [validSignIn, setValidSignIn] = useState("");
+
+  const [validSignIn, setValidSignIn] = useState(false);
+  const [displayValidSignIn, setDisplayValidSignIn] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -45,9 +48,9 @@ const SignIn = (props) => {
 
     axios.post('http://localhost:4000/app/signin', login).then((res) => {
       console.log(res.data);
-      res.data.bool
-        ? setValidSignIn('')
-        : setValidSignIn('User not found. Email or password incorrect!');
+      res.data.bool ? setValidSignIn(true) : setValidSignIn(false);
+      res.data.bool ? setDisplayValidSignIn("") : setDisplayValidSignIn('User not found. Email or password incorrect!');
+      
     });
   };
 
@@ -106,7 +109,7 @@ const SignIn = (props) => {
             </Button>
             <Grid container>
               <Typography color='red' sx={{ fontWeight: 'bold' }}>
-                {validSignIn}
+                {displayValidSignIn}
               </Typography>
               <Grid item xs></Grid>
               <Grid item>
