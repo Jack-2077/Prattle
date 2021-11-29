@@ -11,6 +11,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
+import React, { useState } from 'react';
+import { Route, Redirect, useHistory } from 'react-router-dom';
+import SignIn from './SignIn';
 
 function Copyright(props) {
   return (
@@ -33,10 +36,14 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [validSignIn, setValidSignIn] = useState('');
+  const [isSignedUp, setisSignedUp] = useState(false);
+
+  let history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
     const registered = {
       first_name: data.get('firstName'),
       last_name: data.get('lastName'),
@@ -44,12 +51,15 @@ export default function SignUp() {
       password: data.get('password'),
     };
 
-    axios
-      .post('http://localhost:4000/app/signup', registered)
-      .then((res) => console.log(res.data));
+    axios.post('http://localhost:4000/app/signup', registered).then((res) => {
+      console.log(res.data);
+      res.data.bool
+        ? setisSignedUp(true)
+        : setValidSignIn('A user with this email already exists');
+    });
   };
 
-  return (
+  const SignUpForm = () => (
     <ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
@@ -126,6 +136,7 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
+            <span style={{ color: 'red' }}>{validSignIn}</span>
             <Grid container justifyContent='flex-end'>
               <Grid item>
                 <Link component={RouterLink} variant='body2' to='/signin'>
@@ -138,5 +149,11 @@ export default function SignUp() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+  );
+
+  return (
+    <Route path='/' exact>
+      {isSignedUp ? <Redirect to='/signin' /> : <SignUpForm />}
+    </Route>
   );
 }
