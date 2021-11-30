@@ -12,14 +12,14 @@ function App() {
   const [isLoggedIn, setLogIn] = useState(false);
   return (
     <div>
-      {/* <Switch>
+      <Switch>
         <Route path='/home' component={Home} />
         <Route path='/about' component={About} />
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
+        <Rpute path='/articles' component={Articles} />
         <Route component={Error} />
-      </Switch> */}
-      <Article />
+      </Switch>
     </div>
   );
 }
