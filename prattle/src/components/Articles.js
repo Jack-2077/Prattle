@@ -25,14 +25,17 @@ function Articles() {
         <div className='article-sidebar'>
           <div className='article-grid'>
             {news.map((item, i) => (
-              <article
-                href={item.url}
-                onClick={() => (window.location.href = `${item.url}`)}
-              >
+              <article>
                 <img src={item.urlToImage} alt='' />
                 <div>
                   <h3> {item.title}</h3>
                   <p>{item.description}</p>
+                  <a
+                    onClick={() => (window.location.href = `${item.url}`)}
+                    className='Read-more'
+                  >
+                    Read more
+                  </a>
                 </div>
               </article>
             ))}
