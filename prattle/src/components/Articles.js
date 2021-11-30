@@ -4,6 +4,11 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+  if (newWindow) newWindow.opener = null;
+};
+
 function Articles() {
   const [news, setNews] = useState([]);
   useEffect(() => {
@@ -31,7 +36,7 @@ function Articles() {
                   <h3> {item.title}</h3>
                   <p>{item.description}</p>
                   <a
-                    onClick={() => (window.location.href = `${item.url}`)}
+                    onClick={() => openInNewTab(item.url)}
                     className='Read-more'
                   >
                     Read more
