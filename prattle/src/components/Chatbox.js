@@ -22,7 +22,6 @@ function Chatbox() {
     getMessages();
   }, []);
 
-  console.log(msgArr);
   return <div>{showMsg}</div>;
 }
 

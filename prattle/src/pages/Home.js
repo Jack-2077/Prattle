@@ -19,8 +19,6 @@ export default function Home() {
           //  component='maibackground.default'
           sx={{ flexGrow: 1, bgcolor: '', p: 3 }}
         >
-          <Appbar />
-          <Toolbar />
           <Chatbox />
         </Box>
         <Box
