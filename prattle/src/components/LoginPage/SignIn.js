@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 
 function Copyright(props) {
@@ -33,11 +33,11 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-const SignIn = (props) => {
+const SignIn = () => {
+  const [displayValidSignIn, setDisplayValidSignIn] = useState('');
 
-  const [validSignIn, setValidSignIn] = useState(false);
-  const [displayValidSignIn, setDisplayValidSignIn] = useState("");
-  
+  let history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -48,10 +48,9 @@ const SignIn = (props) => {
     };
 
     axios.post('http://localhost:4000/app/signin', login).then((res) => {
-      console.log(res.data);
-      res.data.bool ? setValidSignIn(true) : setValidSignIn(false);
-      res.data.bool ? setDisplayValidSignIn("") : setDisplayValidSignIn('User not found. Email or password incorrect!');
-      
+      res.data.bool
+        ? history.push('/home')
+        : setDisplayValidSignIn('User not found. Email or password incorrect!');
     });
   };
 
@@ -104,7 +103,6 @@ const SignIn = (props) => {
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
-              onClick={event => props.onClick(validSignIn)}
             >
               Sign In
             </Button>
@@ -124,6 +122,7 @@ const SignIn = (props) => {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
-  );}
+  );
+};
 
-  export default SignIn;
+export default SignIn;
