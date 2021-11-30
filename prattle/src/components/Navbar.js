@@ -6,11 +6,13 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import ForumIcon from '@mui/icons-material/Forum';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
+import { useHistory } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -45,6 +47,7 @@ function stringAvatar(name) {
 
 function Navbar() {
   const [userList, setUserList] = useState([]);
+  let history = useHistory();
 
   useEffect(() => {
     axios
@@ -73,14 +76,28 @@ function Navbar() {
       <Toolbar />
       <Divider />
       <List>
-        {['Test', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <ForumIcon />
+          </ListItemIcon>
+          <ListItemText primary='General Chat' />
+        </ListItem>
+        <ListItem button onClick={() => history.push('/articles')}>
+          <ListItemIcon>
+            <NewspaperIcon />
+          </ListItemIcon>
+          <ListItemText primary='News' />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <HelpOutlineIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary='About'
+            button
+            onClick={() => history.push('/about')}
+          />
+        </ListItem>
       </List>
       <Divider />
       <List>

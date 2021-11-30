@@ -6,7 +6,7 @@ import SignUp from './components/LoginPage/SignUp';
 import SignIn from './components/LoginPage/SignIn';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useState } from 'react';
-import Article from './components/Articles';
+import Articles from './components/Articles';
 
 function App() {
   const [isLoggedIn, setLogIn] = useState(false);
@@ -17,7 +17,7 @@ function App() {
         <Route path='/about' component={About} />
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
-        <Rpute path='/articles' component={Articles} />
+        <Route path='/articles' component={Articles} />
         <Route component={Error} />
       </Switch>
     </div>
