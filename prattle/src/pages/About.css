@@ -1,0 +1,41 @@
+.subheading{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.sub-subheading{
+    font-weight: bold;
+    font-size: 20px;
+    color:#9C27B0;
+}
+
+.regular-text{
+    font-size: 16px;
+    font-weight: normal;
+    margin: 15px;
+    color: black;
+}
+
+.code-block{
+    text-align: center;
+    color: #A6E230;
+    background-color: #001E3C;
+    border-radius: 6px;
+    margin: 10px;
+}
+
+.card-bg{
+    background-color:#f6f6f6;
+    border-radius:6px; 
+    padding:1rem;
+    margin: 5px;
+}
+
+a{
+    color: #1976D2;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
