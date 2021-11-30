@@ -12,8 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Route, Redirect, useHistory } from 'react-router-dom';
-import SignIn from './SignIn';
+import { useHistory } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -37,7 +36,6 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [validSignIn, setValidSignIn] = useState('');
-  const [isSignedUp, setisSignedUp] = useState(false);
 
   let history = useHistory();
 
