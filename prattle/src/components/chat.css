@@ -5,12 +5,12 @@
   font-weight: 400;
   background-color: #1d8bf8;
   color: white;
-  padding: 20px;
-  text-align: center;
   border-radius: 25px;
-
 }
 
-.chat-area{
-  width: 80%;
+
+.remove-icon{
+  position: relative;
+  left: 3%;
+  top: 5px;
 }
