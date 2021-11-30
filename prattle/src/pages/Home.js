@@ -1,9 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import Navbar from '../components/Navbar';
-import Appbar from '../components/Appbar';
 import Chatbox from '../components/Chatbox';
 import Textinput from '../components/Textinput';
 

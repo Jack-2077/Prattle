@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './chat.css';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 
 function Chatbox() {
   const [msgArr, setMsgArr] = useState([]);
