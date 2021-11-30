@@ -67,9 +67,8 @@ router.post('/messages', (req, res) => {
 });
 
 router.get('/messages', (req, res) => {
-  Message.find({ email: 'Lii@gmail.com' }).then((msg) => {
+  Message.find().then((msg) => {
     if (msg) {
-      console.log(msg);
       res.json({
         messageRes: JSON.stringify(msg),
       });
@@ -86,6 +85,17 @@ router.get('/users', (req, res) => {
     );
     res.json({ userList });
   });
+});
+
+router.delete('/messages', (req,res) => {
+  let messageID = req.body.id;
+  Message.deleteOne({_id: messageID}).then((msg) => {
+    if (msg) {
+      res.json({message: "Message deleted"});
+    }else{
+      res.json({status: 400});
+    }
+  })
 });
 
 module.exports = router;
