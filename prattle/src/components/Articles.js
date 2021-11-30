@@ -4,6 +4,11 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+  if (newWindow) newWindow.opener = null;
+};
+
 function Articles() {
   const [news, setNews] = useState([]);
   useEffect(() => {
@@ -25,14 +30,17 @@ function Articles() {
         <div className='article-sidebar'>
           <div className='article-grid'>
             {news.map((item, i) => (
-              <article
-                href={item.url}
-                onClick={() => (window.location.href = `${item.url}`)}
-              >
+              <article>
                 <img src={item.urlToImage} alt='' />
                 <div>
                   <h3> {item.title}</h3>
                   <p>{item.description}</p>
+                  <a
+                    onClick={() => openInNewTab(item.url)}
+                    className='Read-more'
+                  >
+                    Read more
+                  </a>
                 </div>
               </article>
             ))}

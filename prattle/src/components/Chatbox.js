@@ -5,8 +5,6 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { red } from '@mui/material/colors';
 
-
-
 function Chatbox() {
   const [msgArr, setMsgArr] = useState([]);
   let msgString = '';
@@ -18,7 +16,9 @@ function Chatbox() {
   }
 
   const showMsg = msgArr.map((arr) => (
-    <Typography className='message-bubble'>{arr.message}</Typography>
+    <Typography className='message-bubble' key={arr._id}>
+      {arr.message}
+    </Typography>
   ));
 
   useEffect(() => {

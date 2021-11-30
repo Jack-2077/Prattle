@@ -44,19 +44,30 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const registered = {
-      first_name: data.get('firstName'),
-      last_name: data.get('lastName'),
-      email: data.get('email'),
-      password: data.get('password'),
-    };
-
-    axios.post('http://localhost:4000/app/signup', registered).then((res) => {
-      console.log(res.data);
-      res.data.bool
-        ? setisSignedUp(true)
-        : setValidSignIn('A user with this email already exists');
-    });
+    const userFirstName = data.get('firstName');
+    const userLastName = data.get('lastName');
+    const userEmail = data.get('email');
+    const userPassword = data.get('password');
+    if (userFirstName && userLastName && userEmail && userPassword) {
+      const registered = {
+        first_name: userFirstName,
+        last_name: userLastName,
+        email: userEmail,
+        password: userPassword,
+      };
+      axios
+        .post('http://localhost:4000/app/signup', registered)
+        .then((res) => {
+          if (res.data) {
+            history.push('/signin');
+          } else {
+            setValidSignIn('A user with this email already exists');
+          }
+        })
+        .catch(function (error) {
+          console.log(error.toJSON());
+        });
+    }
   };
 
   const SignUpForm = () => (
@@ -151,9 +162,5 @@ export default function SignUp() {
     </ThemeProvider>
   );
 
-  return (
-    <Route path='/' exact>
-      {isSignedUp ? <Redirect to='/signin' /> : <SignUpForm />}
-    </Route>
-  );
+  return <SignUpForm />;
 }
