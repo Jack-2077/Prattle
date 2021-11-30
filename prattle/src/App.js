@@ -10,7 +10,7 @@ import Articles from './components/Articles';
 import Navbar from './components/Navbar';
 
 function App() {
-  const [isLoggedIn, setLogIn] = useState(false);
+  const [isLoggedIn, setLogIn] = useState(false);    
   return (
     <div>
       <Navbar />

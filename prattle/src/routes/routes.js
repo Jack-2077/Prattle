@@ -26,6 +26,7 @@ router.post('/signup', (req, res) => {
         })
         .catch((error) => {
           res.json(error);
+          res.status(400).json({msg: `Signup error`});
         });
     }
   });
@@ -46,6 +47,7 @@ router.post('/signin', (req, res) => {
       res.json({
         bool: 0, //Send message "0" to show user is NOT found
       });
+      res.status(400).json({msg: `No user found with the email of ${email} or the password is incorrect`});
     }
   });
 });
@@ -63,16 +65,18 @@ router.post('/messages', (req, res) => {
     })
     .catch((error) => {
       res.json(error);
+      res.status(400).json({msg: `Error: Message not created`});
     });
 });
 
 router.get('/messages', (req, res) => {
-  Message.find({ email: 'Lii@gmail.com' }).then((msg) => {
+  Message.find().then((msg) => {
     if (msg) {
-      console.log(msg);
       res.json({
         messageRes: JSON.stringify(msg),
       });
+    }else{
+      res.status(400).json({msg: `No messages found`});
     }
   });
 });
@@ -86,6 +90,17 @@ router.get('/users', (req, res) => {
     );
     res.json({ userList });
   });
+});
+
+router.delete('/messages', (req,res) => {
+  let messageID = req.body.id;
+  Message.deleteOne({_id: messageID}).then((msg) => {
+    if (msg) {
+      res.json({message: "Message deleted"});
+    }else{
+      res.status(400).json({msg: `No message with the id of ${messageID}`});
+    }
+  })
 });
 
 module.exports = router;
