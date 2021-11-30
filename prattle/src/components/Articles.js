@@ -1,7 +1,7 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
 import './Articles.scss';
 import axios from 'axios';
+import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 
 function Articles() {
@@ -21,6 +21,7 @@ function Articles() {
 
   return (
     <div>
+      <Navbar />
       <div className='page-wrap'>
         <div className='article-sidebar'>
           <div className='article-grid'>
@@ -36,11 +37,6 @@ function Articles() {
                 </div>
               </article>
             ))}
-          </div>
-          <div className='sidebar'>
-            <div className='sticky'>
-              <img src='https://lipsum.app/id/13/600x1200' alt='' />
-            </div>
           </div>
         </div>
       </div>
