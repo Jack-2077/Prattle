@@ -12,14 +12,18 @@ function App() {
   const [isLoggedIn, setLogIn] = useState(false);
   return (
     <div>
-      {/* <Switch>
+      <Switch>
+        <Route path='/' exact >
+          {isLoggedIn ? <Redirect to="/home" /> : 
+            <SignIn onClick={(bool) => setLogIn(bool)}/>}
+        </Route>  
         <Route path='/home' component={Home} />
         <Route path='/about' component={About} />
-        <Route path='/signin' component={SignIn} />
+        {/* <Route path='/signin' component={SignIn} /> */}
         <Route path='/signup' component={SignUp} />
         <Route component={Error} />
-      </Switch> */}
-      <Article />
+      </Switch> 
+      {/*<Article />*/}
     </div>
   );
 }
