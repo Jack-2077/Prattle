@@ -2,13 +2,15 @@ import React, {useState,useEffect} from 'react';
 import './chat.css';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';import { red } from '@mui/material/colors';
+
+
 
 function Chatbox() {
   const [msgArr, setMsgArr] = useState([]);
   let msgString = "";
 
-  async function  getMessages() {
+  function  getMessages() {
     axios
       .get("http://localhost:4000/app/messages")
       .then(res => {
@@ -17,9 +19,31 @@ function Chatbox() {
   }
 
 
+  const deleteMessage = (e) => {
+    e.preventDefault();
+    let id = e.currentTarget.id;
+  
+    axios
+      .delete("http://localhost:4000/app/messages", {data: {id: id}})
+      .then(res => {
+        console.log(res.status);
+      })
+    getMessages();
+  }
 
   const showMsg = msgArr.map((arr) =>
-    <Typography className="message-bubble">{arr.message}</Typography>
+  <div className="message-box">
+    <p className="message-bubble">
+      {arr.message}
+      <DeleteIcon 
+      id={arr._id}
+      className="remove-icon" 
+      onClick={deleteMessage}
+      sx={{ '&:hover':{color: red[500]} }}
+      />
+    </p>
+  </div>
+
   )
 
   useEffect(() => {
@@ -29,7 +53,6 @@ function Chatbox() {
     return () => { ignore = true; }
     },[]);
 
-console.log(msgArr);
   return (
     <div>
       {showMsg}
