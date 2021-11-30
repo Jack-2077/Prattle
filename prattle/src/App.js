@@ -5,7 +5,8 @@ import Error from './pages/Error';
 import SignUp from './components/LoginPage/SignUp';
 import SignIn from './components/LoginPage/SignIn';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import {useState} from 'react';
+import { useState } from 'react';
+import Article from './components/Articles';
 
 function App() {
   const [isLoggedIn, setLogIn] = useState(false);
