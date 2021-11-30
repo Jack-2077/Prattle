@@ -9,19 +9,28 @@ import {useState} from 'react';
 
 function App() {
   const [isLoggedIn, setLogIn] = useState(false);
+
+
+
+  const Pages = () => {
+    return isLoggedIn &&(
+    <Switch>
+    <Route path='/home' component={Home} />
+    </Switch>)}
+    
   return (
     <div>
       <Switch>
-        <Route path='/' exact >
-          {isLoggedIn ? <Redirect to="/home" /> : 
-            <SignIn onClick={(bool) => setLogIn(bool)}/>}
-        </Route>  
-        <Route path='/home' component={Home} />
-        <Route path='/about' component={About} />
-        <Route path='/signin' component={SignIn} />
-        <Route path='/signup' component={SignUp} />
-        <Route component={Error} />
+            <Route path='/' exact >
+              {isLoggedIn ? <Redirect to="/home" /> : 
+                <SignIn onClick={(bool) => setLogIn(bool)}/>}
+            </Route> 
+            <Route path='/about' component={About} />
+            <Route path='/signup' component={SignUp} />
+            <Route component={Error} />
+            
       </Switch>
+      <Pages />
     </div>
   );
 }
