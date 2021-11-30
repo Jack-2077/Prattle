@@ -21,7 +21,6 @@ function Articles() {
 
   return (
     <div>
-      <Navbar />
       <div className='page-wrap'>
         <div className='article-sidebar'>
           <div className='article-grid'>

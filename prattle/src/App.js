@@ -7,11 +7,13 @@ import SignIn from './components/LoginPage/SignIn';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import Articles from './components/Articles';
+import Navbar from './components/Navbar';
 
 function App() {
   const [isLoggedIn, setLogIn] = useState(false);
   return (
     <div>
+      <Navbar />
       <Switch>
         <Route path='/' exact>
           {isLoggedIn ? (

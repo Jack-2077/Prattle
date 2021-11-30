@@ -13,6 +13,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import { useHistory } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 
 const drawerWidth = 240;
 
@@ -61,56 +63,59 @@ function Navbar() {
   }, []);
 
   return (
-    <Drawer
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <Drawer
+        sx={{
           width: drawerWidth,
-          boxSizing: 'border-box',
-        },
-      }}
-      variant='permanent'
-      anchor='left'
-    >
-      <Toolbar />
-      <Divider />
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <ForumIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary='General Chat'
-            button
-            onClick={() => history.push('/home')}
-          />
-        </ListItem>
-        <ListItem button onClick={() => history.push('/articles')}>
-          <ListItemIcon>
-            <NewspaperIcon />
-          </ListItemIcon>
-          <ListItemText primary='News' />
-        </ListItem>
-        <ListItem button onClick={() => history.push('/about')}>
-          <ListItemIcon>
-            <HelpOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary='About' button />
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        {userList.map((user, index) => (
-          <ListItem button key={index}>
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant='permanent'
+        anchor='left'
+      >
+        <Toolbar />
+        <Divider />
+        <List>
+          <ListItem button>
             <ListItemIcon>
-              <Avatar {...stringAvatar(user)} />
+              <ForumIcon />
             </ListItemIcon>
-            <ListItemText primary={user} />
+            <ListItemText
+              primary='General Chat'
+              button
+              onClick={() => history.push('/home')}
+            />
           </ListItem>
-        ))}
-      </List>
-    </Drawer>
+          <ListItem button onClick={() => history.push('/articles')}>
+            <ListItemIcon>
+              <NewspaperIcon />
+            </ListItemIcon>
+            <ListItemText primary='News' />
+          </ListItem>
+          <ListItem button onClick={() => history.push('/about')}>
+            <ListItemIcon>
+              <HelpOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary='About' button />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          {userList.map((user, index) => (
+            <ListItem button key={index}>
+              <ListItemIcon>
+                <Avatar {...stringAvatar(user)} />
+              </ListItemIcon>
+              <ListItemText primary={user} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </Box>
   );
 }
 
