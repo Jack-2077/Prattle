@@ -16,7 +16,9 @@ function Chatbox() {
   }
 
   const showMsg = msgArr.map((arr) => (
-    <Typography className='message-bubble'>{arr.message}</Typography>
+    <Typography className='message-bubble' key={arr._id}>
+      {arr.message}
+    </Typography>
   ));
 
   useEffect(() => {
