@@ -82,15 +82,11 @@ function Navbar() {
           <Toolbar />
           <Divider />
           <List>
-            <ListItem button>
+            <ListItem onClick={() => history.push('/home')} button>
               <ListItemIcon>
                 <ForumIcon />
               </ListItemIcon>
-              <ListItemText
-                primary='General Chat'
-                button
-                onClick={() => history.push('/home')}
-              />
+              <ListItemText primary='General Chat' />
             </ListItem>
             <ListItem button onClick={() => history.push('/articles')}>
               <ListItemIcon>
@@ -102,7 +98,7 @@ function Navbar() {
               <ListItemIcon>
                 <HelpOutlineIcon />
               </ListItemIcon>
-              <ListItemText primary='About' button />
+              <ListItemText primary='About' />
             </ListItem>
           </List>
           <Divider />
