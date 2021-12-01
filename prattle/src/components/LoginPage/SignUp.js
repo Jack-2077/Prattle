@@ -41,11 +41,15 @@ export default function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    //store user input
     const data = new FormData(event.currentTarget);
     const userFirstName = data.get('firstName');
     const userLastName = data.get('lastName');
     const userEmail = data.get('email');
     const userPassword = data.get('password');
+
+    //when user input not empty
     if (userFirstName && userLastName && userEmail && userPassword) {
       const registered = {
         first_name: userFirstName,
@@ -53,13 +57,15 @@ export default function SignUp() {
         email: userEmail,
         password: userPassword,
       };
+
+      //send post request to server
       axios
         .post('http://localhost:4000/app/signup', registered)
         .then((res) => {
           if (res.data) {
-            history.push('/signin');
+            history.push('/signin'); //redirect when a user signs up
           } else {
-            setValidSignIn('A user with this email already exists');
+            setValidSignIn('A user with this email already exists'); //else display error message
           }
         })
         .catch(function (error) {

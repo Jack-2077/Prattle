@@ -19,6 +19,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 const drawerWidth = 240;
 
+//generate random hex values based on user's first and last name
+
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -39,6 +41,7 @@ function stringToColor(string) {
   return color;
 }
 
+//take out the first character of first and last name
 function stringAvatar(name) {
   return {
     sx: {
@@ -52,6 +55,7 @@ function Navbar() {
   const [userList, setUserList] = useState([]);
   let history = useHistory();
 
+  //run only once to load users in database
   useEffect(() => {
     axios
       .get('http://localhost:4000/app/users')
