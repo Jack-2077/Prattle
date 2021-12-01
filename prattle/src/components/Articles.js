@@ -10,13 +10,15 @@ const openInNewTab = (url) => {
 
 function Articles() {
   const [news, setNews] = useState([]);
+
+  //run only once (after page is rendered) to get news from api
   useEffect(() => {
     axios
       .get(
         'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=465543691c9444e69ac401dcb442d179'
       )
       .then((res) => {
-        setNews(res.data.articles);
+        setNews(res.data.articles); //store the news to an array
       })
       .catch((error) => {
         console.error('There was an error!', error);
