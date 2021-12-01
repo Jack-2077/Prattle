@@ -2,12 +2,14 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Chatbox from '../components/Chatbox';
 import Textinput from '../components/Textinput';
+import Navbar from '../components/Navbar';
 
 const drawerWidth = 240;
 
 export default function Home() {
   return (
     <>
+      <Navbar />
       <div>
         <Box
           position='absolute'
