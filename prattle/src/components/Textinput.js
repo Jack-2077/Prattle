@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { TextField } from '@mui/material';
 import axios from 'axios';
-import getMessage from './Chatbox'
 
 function Textinput() {
   const [msgInput, setMsgInput] = useState("");
