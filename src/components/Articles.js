@@ -38,7 +38,7 @@ function Articles() {
                   <h3> {item.title}</h3>
                   <p>{item.description}</p>
                   <a
-                    href={item.url}
+                   
                     onClick={() => openInNewTab(item.url)}
                     className='Read-more'
                   >
