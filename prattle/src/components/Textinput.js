@@ -13,7 +13,7 @@ function Textinput() {
     //Create msg in JSON format
     const msg = {
       message: msgInput,
-      email: "Lii@gmail.com",
+      email: "dshrute@gmail.com",
     };
 
     //Post request to the MongoDB server to send the JSON data
@@ -22,17 +22,24 @@ function Textinput() {
       .then(res => console.log(res.data));
   }
 
+  //Message handler
   function handleMessage(){
     sendMessageDB();
   }
   
+  //Text input chage handler
   function handleChange(e){
     setMsgInput(e.target.value);
   }
 
+  //Clear the text box after sending message
   function handleClear(e){
     setMsgInput("");
     e.target.value = "";
+  }
+
+  function refresh(){
+    setTimeout( function() { window.location.reload(); }, 100);
   }
 
     return (
@@ -54,6 +61,7 @@ function Textinput() {
               if (e.key === 'Enter') {
                 handleMessage();
                 handleClear(e);
+                refresh();
               }
             }}
           />

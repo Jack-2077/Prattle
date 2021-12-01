@@ -42,7 +42,7 @@ function Chatbox() {
   useEffect(() => {
     getMessages();
   }, []);
-  return <div>{showMsg}</div>;
+  return <div id="chat">{showMsg}</div>;
 }
 
 export default Chatbox;

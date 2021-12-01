@@ -22,11 +22,10 @@ router.post('/signup', (req, res) => {
       signedUpUser
         .save()
         .then((user) => {
-          res.json({ bool: 1 });
+          res.status(200).json({ bool: 1 });
         })
         .catch((error) => {
-          res.json(error);
-          res.status(400).json({ msg: `Signup error` });
+          res.status(400).json(error);
         });
     }
   });
@@ -39,7 +38,7 @@ router.post('/signin', (req, res) => {
   signUpTemplate.findOne({ email: email, password: password }).then((user) => {
     if (user) {
       console.log('Login request found user: ' + user);
-      res.json({
+      res.status(200).json({
         bool: 1, //Send message "1" to show user is found
       });
     } else {
@@ -63,18 +62,17 @@ router.post('/messages', (req, res) => {
   newMessage
     .save()
     .then((data) => {
-      res.json(data);
+      res.status(200).json(data);
     })
     .catch((error) => {
-      res.json(error);
-      res.status(400).json({ msg: `Error: Message not created` });
+      res.status(400).json(error);
     });
 });
 
 router.get('/messages', (req, res) => {
   Message.find().then((msg) => {
     if (msg) {
-      res.json({
+      res.status(200).json({
         messageRes: JSON.stringify(msg),
       });
     } else {
@@ -85,12 +83,16 @@ router.get('/messages', (req, res) => {
 
 router.get('/users', (req, res) => {
   signUpTemplate.find({}).then((users) => {
+    if(users){
     let userList = {};
 
     users.forEach(
       (user) => (userList[user._id] = user.first_name + ' ' + user.last_name)
     );
-    res.json({ userList });
+    res.status(200).json({ userList });
+    }else{
+      res.status(400).json({msg: "No users found"});
+    }
   });
 });
 
@@ -98,7 +100,7 @@ router.delete('/messages', (req, res) => {
   let messageID = req.body.id;
   Message.deleteOne({ _id: messageID }).then((msg) => {
     if (msg) {
-      res.json({ message: 'Message deleted' });
+      res.status(200).json({ message: 'Message deleted' });
     } else {
       res.status(400).json({ msg: `No message with the id of ${messageID}` });
     }
