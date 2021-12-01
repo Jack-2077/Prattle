@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { TextField } from '@mui/material';
 import axios from 'axios';
+import getMessage from './Chatbox'
 
 function Textinput() {
   const [msgInput, setMsgInput] = useState("");
@@ -22,17 +23,24 @@ function Textinput() {
       .then(res => console.log(res.data));
   }
 
+  //Message handler
   function handleMessage(){
     sendMessageDB();
   }
   
+  //Text input chage handler
   function handleChange(e){
     setMsgInput(e.target.value);
   }
 
+  //Clear the text box after sending message
   function handleClear(e){
     setMsgInput("");
     e.target.value = "";
+  }
+
+  function refresh(){
+    setTimeout( function() { window.location.reload(); }, 100);
   }
 
     return (
@@ -54,6 +62,7 @@ function Textinput() {
               if (e.key === 'Enter') {
                 handleMessage();
                 handleClear(e);
+                refresh();
               }
             }}
           />
