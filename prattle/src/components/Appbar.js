@@ -12,7 +12,7 @@ export default function Appbar() {
             <Toolbar>
                 {/* TODO: Make channel name prop */}
             <Typography variant="h6" noWrap component="div" > 
-                Permanent drawer
+                Prattle
             </Typography>
             </Toolbar>
             </AppBar>
