@@ -40,7 +40,7 @@ const SignIn = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const data = new FormData(event.currentTarget); //get the form data
 
     const login = {
       email: data.get('email'),
@@ -49,8 +49,8 @@ const SignIn = () => {
 
     axios.post('http://localhost:4000/app/signin', login).then((res) => {
       res.data.bool
-        ? history.push('/home')
-        : setDisplayValidSignIn('User not found. Email or password incorrect!');
+        ? history.push('/home') //redirect to home page when it is a verified login
+        : setDisplayValidSignIn('User not found. Email or password incorrect!'); //else error message
     });
   };
 

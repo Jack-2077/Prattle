@@ -14,15 +14,15 @@ router.post('/signup', (req, res) => {
 
   signUpTemplate.findOne({ email: email }).then((user) => {
     if (user) {
-      console.log('email already exists: ' + user.email);
+      console.log('email already exists: ' + user);
       res.json({
         bool: 0,
       });
     } else {
       signedUpUser
         .save()
-        .then((data) => {
-          res.status(200).json(data);
+        .then((user) => {
+          res.status(200).json({ bool: 1 });
         })
         .catch((error) => {
           res.status(400).json(error);
