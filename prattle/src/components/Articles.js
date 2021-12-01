@@ -1,9 +1,8 @@
 import React from 'react';
 import './Articles.scss';
 import axios from 'axios';
-import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
-
+import Navbar from './Navbar';
 const openInNewTab = (url) => {
   const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
   if (newWindow) newWindow.opener = null;
@@ -26,16 +25,18 @@ function Articles() {
 
   return (
     <div>
+      <Navbar />
       <div className='page-wrap'>
         <div className='article-sidebar'>
           <div className='article-grid'>
             {news.map((item, i) => (
-              <article>
+              <article key={i}>
                 <img src={item.urlToImage} alt='' />
                 <div>
                   <h3> {item.title}</h3>
                   <p>{item.description}</p>
                   <a
+                    href={item.url}
                     onClick={() => openInNewTab(item.url)}
                     className='Read-more'
                   >
