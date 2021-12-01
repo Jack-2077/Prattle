@@ -62,15 +62,17 @@ export default function SignUp() {
       axios
         .post('http://localhost:4000/app/signup', registered)
         .then((res) => {
-          if (res.data) {
-            history.push('/signin'); //redirect when a user signs up
-          } else {
+          if (!res.data.bool) {
             setValidSignIn('A user with this email already exists'); //else display error message
+          } else {
+            history.push('/signin'); //redirect when a user signs up
           }
         })
         .catch(function (error) {
           console.log(error.toJSON());
         });
+    } else {
+      setValidSignIn('Please enter the required fields');
     }
   };
 
