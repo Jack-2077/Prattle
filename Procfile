@@ -1,2 +1,2 @@
 web: react-scripts start
-web: node server/server.js
+web: node ./server/server.js
