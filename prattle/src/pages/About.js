@@ -5,7 +5,7 @@ import './About.css';
 import Navbar from '../components/Navbar';
 function About() {
   return (
-    <div>
+    <div id="about">
       <Navbar />
       <Box alignContent='center' width='50%' margin='auto'>
         <Typography
