@@ -22,8 +22,12 @@ function Chatbox() {
       .then((res) => {
         console.log(res.status);
       });
-    getMessages();
   };
+
+  function handleClick(e) {
+    deleteMessage(e);
+    setTimeout( function() { getMessages(); }, 100);
+  }
 
   const showMsg = msgArr.map((arr) => (
     <div className='message-box'>
@@ -32,7 +36,7 @@ function Chatbox() {
         <DeleteIcon
           id={arr._id}
           className='remove-icon'
-          onClick={deleteMessage}
+          onClick={handleClick}
           sx={{ '&:hover': { color: red[500] } }}
         />
       </p>
