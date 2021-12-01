@@ -13,7 +13,7 @@ function Textinput() {
     //Create msg in JSON format
     const msg = {
       message: msgInput,
-      email: "Lii@gmail.com",
+      email: "dshrute@gmail.com",
     };
 
     //Post request to the MongoDB server to send the JSON data
