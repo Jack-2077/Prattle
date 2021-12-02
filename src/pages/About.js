@@ -24,6 +24,15 @@ function About() {
           </Box>
         </Box>
 
+        {/* ------------------------------------------WHAT IS PRATTLE CARD-------------------------------------------*/}
+        <Box className='subheading card-bg'>
+          How to use the app
+          <Box className='regular-text'>
+            Prattle requires running a local server to be able to conecct to the database. Please follow the instructions below
+            to run the server locally. You will not need to run the client side application as you may use the site online.
+          </Box>
+        </Box>
+
         {/* ------------------------------------------INSTALLATION AND BUILD CARD-------------------------------------------*/}
         <Box className='subheading card-bg'>
           How to install and run the application:
