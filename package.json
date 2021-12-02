@@ -1,7 +1,7 @@
 {
   "name": "prattle",
   "version": "0.1.0",
-  "engine":{
+  "engines":{
     "node": "^14.17.6"  
   },
     "dependencies": {
